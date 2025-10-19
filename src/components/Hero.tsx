@@ -26,7 +26,7 @@ export default function Hero({ onBookService }: HeroProps) {
                 Book a Service
               </button>
               <a
-                href="tel:+919876543210"
+                href="tel:+91 8838354099"
                 className="flex items-center justify-center bg-white text-blue-600 border-2 border-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-all"
               >
                 <Phone className="w-5 h-5 mr-2" />
@@ -35,7 +35,7 @@ export default function Hero({ onBookService }: HeroProps) {
             </div>
             <div className="mt-12 grid grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600">10+</div>
+                <div className="text-3xl font-bold text-blue-600">3+</div>
                 <div className="text-sm text-gray-600">Years Experience</div>
               </div>
               <div className="text-center">

@@ -45,7 +45,7 @@ export default function Header({ onNavigate }: HeaderProps) {
 
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="tel:+919876543210"
+              href="tel:+91 8838354099"
               className="flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
             >
               <Phone className="w-4 h-4 mr-2" />
@@ -75,7 +75,7 @@ export default function Header({ onNavigate }: HeaderProps) {
               </button>
             ))}
             <a
-              href="tel:+919876543210"
+              href="tel:+91 8838354099"
               className="flex items-center justify-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
             >
               <Phone className="w-4 h-4 mr-2" />

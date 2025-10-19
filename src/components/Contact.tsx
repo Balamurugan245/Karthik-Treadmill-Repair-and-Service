@@ -113,12 +113,12 @@ export default function Contact() {
                   <div>
                     <div className="font-semibold text-gray-900">WhatsApp</div>
                     <a
-                      href="https://wa.me/919876543210"
+                      href="https://wa.me/91 8838354099"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:underline"
                     >
-                      +91 98765 43210
+                      +91  8838354099
                     </a>
                   </div>
                 </div>

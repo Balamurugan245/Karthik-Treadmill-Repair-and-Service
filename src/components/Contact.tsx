@@ -101,8 +101,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900">Phone</div>
-                    <a href="tel:+919876543210" className="text-blue-600 hover:underline">
-                      +91 98765 43210
+                    <a href="tel:+918838354099" className="text-blue-600 hover:underline">
+                      +91  8838354099
                     </a>
                   </div>
                 </div>

@@ -16,24 +16,60 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     date: '',
     description: '',
   });
-  const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  // ✅ Your Google Apps Script Web App URL
+  const scriptURL =
+    'https://script.google.com/macros/s/AKfycbxM_ygtT2E5W_DNDpTsH7LsjXC2I0MyPzgHIXBcSbNbwz-EWYO9R011-qEG4foVugWl9g/exec';
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      onClose();
-      setFormData({
-        name: '',
-        phone: '',
-        email: '',
-        address: '',
-        service: '',
-        date: '',
-        description: '',
+    setLoading(true);
+
+    try {
+      // Send form data to Google Sheets
+      await fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          timestamp: new Date().toISOString(),
+          formType: 'Service Booking',
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          address: formData.address,
+          serviceType: formData.service,
+          preferredDate: formData.date,
+          message: '',
+          issueDescription: formData.description,
+        }),
       });
-    }, 2000);
+
+      setSubmitted(true);
+      setLoading(false);
+
+      // Reset form after 2s
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          address: '',
+          service: '',
+          date: '',
+          description: '',
+        });
+        onClose();
+      }, 2000);
+    } catch (error) {
+      console.error('Error!', error);
+      setLoading(false);
+      alert('Something went wrong while submitting the form!');
+    }
   };
 
   if (!isOpen) return null;
@@ -50,6 +86,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
             <X className="w-6 h-6" />
           </button>
         </div>
+
         <div className="p-6">
           {submitted ? (
             <div className="text-center py-8">
@@ -84,6 +121,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   placeholder="Your full name"
                 />
               </div>
+
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-gray-700 font-medium mb-2">Phone *</label>
@@ -108,6 +146,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   />
                 </div>
               </div>
+
               <div>
                 <label className="block text-gray-700 font-medium mb-2">Address *</label>
                 <input
@@ -119,6 +158,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   placeholder="Your complete address"
                 />
               </div>
+
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-gray-700 font-medium mb-2">Service Type *</label>
@@ -150,6 +190,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   />
                 </div>
               </div>
+
               <div>
                 <label className="block text-gray-700 font-medium mb-2">
                   Issue Description
@@ -162,11 +203,15 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   placeholder="Describe the issue with your treadmill..."
                 />
               </div>
+
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg"
+                disabled={loading}
+                className={`w-full ${
+                  loading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'
+                } text-white px-6 py-4 rounded-lg font-semibold transition-colors shadow-lg`}
               >
-                Confirm Booking
+                {loading ? 'Submitting...' : 'Confirm Booking'}
               </button>
             </form>
           )}

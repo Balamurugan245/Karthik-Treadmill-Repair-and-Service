@@ -27,7 +27,7 @@ export default function Header({ onNavigate }: HeaderProps) {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <h1 className="text-xl sm:text-2xl font-bold text-blue-600">
-              Karthik Treadmill Repair
+              Karthick Treadmill Repair and services
             </h1>
           </div>
 

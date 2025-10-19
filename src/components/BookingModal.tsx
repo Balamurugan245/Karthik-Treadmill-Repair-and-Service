@@ -16,44 +16,36 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     date: '',
     description: '',
   });
-
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  // ✅ Your Google Apps Script Web App URL
-  const scriptURL =
-    'https://script.google.com/macros/s/AKfycbxM_ygtT2E5W_DNDpTsH7LsjXC2I0MyPzgHIXBcSbNbwz-EWYO9R011-qEG4foVugWl9g/exec';
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setLoading(true);
 
     try {
-      // Send form data to Google Sheets
-      await fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          timestamp: new Date().toISOString(),
-          formType: 'Service Booking',
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
-          address: formData.address,
-          serviceType: formData.service,
-          preferredDate: formData.date,
-          message: '',
-          issueDescription: formData.description,
-        }),
-      });
+      await fetch(
+        'https://script.google.com/macros/s/AKfycbzkf5DoPSefAn6QjYYuh7rL3bjK_EnbwixUR0OZoRaMxwR9srcGoBHAR_fRVtBZzVQpJA/exec',
+        {
+          method: 'POST',
+          mode: 'no-cors', // important to avoid CORS blocking
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            formType: 'Booking',
+            name: formData.name,
+            phone: formData.phone,
+            email: formData.email,
+            address: formData.address,
+            serviceType: formData.service,
+            preferredDate: formData.date,
+            message: '',
+            issueDescription: formData.description,
+          }),
+        }
+      );
 
       setSubmitted(true);
-      setLoading(false);
-
-      // Reset form after 2s
       setTimeout(() => {
         setSubmitted(false);
+        onClose();
         setFormData({
           name: '',
           phone: '',
@@ -63,12 +55,10 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
           date: '',
           description: '',
         });
-        onClose();
       }, 2000);
     } catch (error) {
-      console.error('Error!', error);
-      setLoading(false);
-      alert('Something went wrong while submitting the form!');
+      console.error('Error submitting form:', error);
+      alert('There was an error submitting your booking. Please try again.');
     }
   };
 
@@ -79,14 +69,10 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
       <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="sticky top-0 bg-white border-b px-6 py-4 flex items-center justify-between">
           <h2 className="text-2xl font-bold text-gray-900">Book a Service</h2>
-          <button
-            onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 transition-colors"
-          >
+          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
             <X className="w-6 h-6" />
           </button>
         </div>
-
         <div className="p-6">
           {submitted ? (
             <div className="text-center py-8">
@@ -110,6 +96,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Name */}
               <div>
                 <label className="block text-gray-700 font-medium mb-2">Name *</label>
                 <input
@@ -117,11 +104,12 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg"
                   placeholder="Your full name"
                 />
               </div>
 
+              {/* Contact */}
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-gray-700 font-medium mb-2">Phone *</label>
@@ -130,7 +118,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg"
                     placeholder="+91 98765 43210"
                   />
                 </div>
@@ -141,12 +129,13 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg"
                     placeholder="your@email.com"
                   />
                 </div>
               </div>
 
+              {/* Address */}
               <div>
                 <label className="block text-gray-700 font-medium mb-2">Address *</label>
                 <input
@@ -154,11 +143,12 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   required
                   value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg"
                   placeholder="Your complete address"
                 />
               </div>
 
+              {/* Service + Date */}
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-gray-700 font-medium mb-2">Service Type *</label>
@@ -166,52 +156,45 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     required
                     value={formData.service}
                     onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg"
                   >
                     <option value="">Select a service</option>
-                    <option value="general">General Service</option>
-                    <option value="belt">Belt Replacement</option>
-                    <option value="motor">Motor Replacement</option>
-                    <option value="console">Console Repair</option>
-                    <option value="lubrication">Lubrication</option>
-                    <option value="diagnosis">On-site Diagnosis</option>
+                    <option value="Treadmill General Service">Treadmill General Service</option>
+                    <option value="Belt and Motor Replacement">Belt and Motor Replacement</option>
+                    <option value="Electronic Console Repair">Electronic Console Repair</option>
+                    <option value="Lubrication & Maintenance">Lubrication & Maintenance</option>
+                    <option value="On-site Diagnosis and Support">On-site Diagnosis and Support</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2">
-                    Preferred Date *
-                  </label>
+                  <label className="block text-gray-700 font-medium mb-2">Preferred Date *</label>
                   <input
                     type="date"
                     required
                     value={formData.date}
                     onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg"
                   />
                 </div>
               </div>
 
+              {/* Issue Description */}
               <div>
-                <label className="block text-gray-700 font-medium mb-2">
-                  Issue Description
-                </label>
+                <label className="block text-gray-700 font-medium mb-2">Issue Description</label>
                 <textarea
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg resize-none"
                   placeholder="Describe the issue with your treadmill..."
                 />
               </div>
 
               <button
                 type="submit"
-                disabled={loading}
-                className={`w-full ${
-                  loading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'
-                } text-white px-6 py-4 rounded-lg font-semibold transition-colors shadow-lg`}
+                className="w-full bg-blue-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg"
               >
-                {loading ? 'Submitting...' : 'Confirm Booking'}
+                Confirm Booking
               </button>
             </form>
           )}

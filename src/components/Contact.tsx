@@ -169,7 +169,7 @@ export default function Contact() {
               <p className="mb-6">Need immediate assistance? Reach us directly!</p>
               <div className="space-y-3">
                 <a
-                  href="https://wa.me/919876543210"
+                  href="https://wa.me/918838354099"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
@@ -178,7 +178,7 @@ export default function Contact() {
                   WhatsApp Us
                 </a>
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+918838354099"
                   className="flex items-center justify-center bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
                 >
                   <Phone className="w-5 h-5 mr-2" />

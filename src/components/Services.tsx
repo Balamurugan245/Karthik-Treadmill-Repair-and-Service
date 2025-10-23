@@ -11,7 +11,7 @@ export default function Services({ onBookService }: ServicesProps) {
       title: 'Treadmill General Service',
       description:
         'Complete inspection, cleaning, and tune-up of your treadmill to ensure optimal performance.',
-      image: 'https://images.pexels.com/photos/3838389/pexels-photo-3838389.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://www.justdial.com/Delhi/Treadmill-Repair-Services/nct-10930262',
     },
     {
       icon: Settings,

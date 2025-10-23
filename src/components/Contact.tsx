@@ -143,9 +143,9 @@ export default function Contact() {
                   <div>
                     <div className="font-semibold text-gray-900">Address</div>
                     <p className="text-gray-600">
-                      123 Service Road, Tech Park
+                      12, Gangai St, Bharathi Nagar, Tharamani
                       <br />
-                      Bangalore, Karnataka 560001
+                      Chennai, Tamil Nadu 600113
                     </p>
                   </div>
                 </div>

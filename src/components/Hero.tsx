@@ -12,7 +12,7 @@ export default function Hero({ onBookService }: HeroProps) {
           <div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
               Expert Treadmill Repair & Maintenance Services in{' '}
-              <span className="text-blue-600">Your City</span>
+              <span className="text-blue-600">Chennai </span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 mb-8">
               Fast, reliable, and affordable treadmill repair and service at your doorstep.
@@ -39,7 +39,7 @@ export default function Hero({ onBookService }: HeroProps) {
                 <div className="text-sm text-gray-600">Years Experience</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600">500+</div>
+                <div className="text-3xl font-bold text-blue-600">250+</div>
                 <div className="text-sm text-gray-600">Happy Customers</div>
               </div>
               <div className="text-center">

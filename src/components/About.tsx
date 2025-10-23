@@ -37,16 +37,16 @@ export default function About() {
           </div>
           <div>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-              About <span className="text-blue-600">Karthik</span>
+              About <span className="text-blue-600">Karthick</span>
             </h2>
             <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-              With over 10 years of experience in treadmill repair and fitness equipment servicing,
+              With over 3 years of experience in treadmill repair and fitness equipment servicing,
               Karthik has become a trusted name in the industry. Starting as an apprentice in a
               leading fitness equipment company, he developed a deep understanding of all major
               treadmill brands and models.
             </p>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Today, Karthik Treadmill Repair and Service is known for its commitment to quality,
+              Today, Karthick Treadmill Repair and Service is known for its commitment to quality,
               reliability, and customer satisfaction. We believe in honest service, transparent
               pricing, and building lasting relationships with our customers.
             </p>

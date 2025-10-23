@@ -27,7 +27,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/karthi237533/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-800 p-3 rounded-full hover:bg-pink-600 transition-colors"
@@ -35,7 +35,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/918838354099"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-800 p-3 rounded-full hover:bg-green-600 transition-colors"

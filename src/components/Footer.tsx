@@ -19,7 +19,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/share/1FhrjKkpZy/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors"

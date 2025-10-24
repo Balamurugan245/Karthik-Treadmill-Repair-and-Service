@@ -19,47 +19,54 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const form = new FormData();
-    form.append('formType', 'Book a Service');
-    form.append('name', formData.name);
-    form.append('phone', formData.phone);
-    form.append('email', formData.email);
-    form.append('address', formData.address);
-    form.append('serviceType', formData.service);
-    form.append('preferredDate', formData.date);
-    form.append('message', '');
-    form.append('issueDescription', formData.description);
+  // ✅ Prevent multiple clicks / double submissions
+  if (submitted) return;
 
-    try {
-      await fetch(
-        'https://script.google.com/macros/s/AKfycbzgSVCnZzjYJCRPmQrVGuHBgv0MuS5bbfFXwwQ7aO1_TwALFZmGQBZMv6JY05qUOHRXxg/exec',
-        {
-          method: 'POST',
-          body: form,
-        }
-      );
+  setSubmitted(true);
 
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        onClose();
-        setFormData({
-          name: '',
-          phone: '',
-          email: '',
-          address: '',
-          service: '',
-          date: '',
-          description: '',
-        });
-      }, 2000);
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('There was an error submitting your booking. Please try again.');
-    }
-  };
+  const form = new FormData();
+  form.append('formType', 'Book a Service');
+  form.append('name', formData.name);
+  form.append('phone', formData.phone);
+  form.append('email', formData.email);
+  form.append('address', formData.address);
+  form.append('serviceType', formData.service);
+  form.append('preferredDate', formData.date);
+  form.append('message', '');
+  form.append('issueDescription', formData.description);
+
+  try {
+    await fetch(
+      'https://script.google.com/macros/s/AKfycbzgSVCnZzjYJCRPmQrVGuHBgv0MuS5bbfFXwwQ7aO1_TwALFZmGQBZMv6JY05qUOHRXxg/exec',
+      {
+        method: 'POST',
+        body: form,
+      }
+    );
+
+    // Show success
+    setTimeout(() => {
+      setSubmitted(false);
+      onClose();
+      setFormData({
+        name: '',
+        phone: '',
+        email: '',
+        address: '',
+        service: '',
+        date: '',
+        description: '',
+      });
+    }, 2000);
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    alert('There was an error submitting your booking. Please try again.');
+    setSubmitted(false); // reset on error
+  }
+};
+
 
   if (!isOpen) return null;
 

@@ -33,14 +33,7 @@ export default function Services({ onBookService }: ServicesProps) {
       description:
         'Regular lubrication service to reduce friction, noise, and extend your treadmill lifespan.',
       image: 'https://m.media-amazon.com/images/I/81LRvVK-grL._AC_UF350,350_QL80_.jpg',
-    },
-    {
-      icon: Search,
-      title: 'On-site Diagnosis and Support',
-      description:
-        'Free on-site inspection and diagnosis with detailed report and repair recommendations.',
-      image: 'https://images.pexels.com/photos/3760275/pexels-photo-3760275.jpeg?auto=compress&cs=tinysrgb&w=400',
-    },
+    }
   ];
 
   return (

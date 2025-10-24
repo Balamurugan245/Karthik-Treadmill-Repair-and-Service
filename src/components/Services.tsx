@@ -32,7 +32,7 @@ export default function Services({ onBookService }: ServicesProps) {
       title: 'Lubrication & Maintenance',
       description:
         'Regular lubrication service to reduce friction, noise, and extend your treadmill lifespan.',
-      image: 'https://images.pexels.com/photos/4164844/pexels-photo-4164844.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://m.media-amazon.com/images/I/81LRvVK-grL._AC_UF350,350_QL80_.jpg',
     },
     {
       icon: Search,

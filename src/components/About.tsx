@@ -10,7 +10,7 @@ export default function About() {
     {
       icon: Users,
       title: 'Customer First',
-      description: '500+ satisfied customers across the city',
+      description: '250+ satisfied customers across the city',
     },
     {
       icon: Wrench,
@@ -41,7 +41,7 @@ export default function About() {
             </h2>
             <p className="text-lg text-gray-600 mb-6 leading-relaxed">
               With over 3 years of experience in treadmill repair and fitness equipment servicing,
-              Karthik has become a trusted name in the industry. Starting as an apprentice in a
+              Karthick has become a trusted name in the industry. Starting as an apprentice in a
               leading fitness equipment company, he developed a deep understanding of all major
               treadmill brands and models.
             </p>

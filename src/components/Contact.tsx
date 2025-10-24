@@ -10,11 +10,36 @@ export default function Contact() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setFormData({ name: '', phone: '', email: '', message: '' });
+
+    const form = new FormData();
+    form.append('formType', 'Send a Message');
+    form.append('name', formData.name);
+    form.append('phone', formData.phone);
+    form.append('email', formData.email);
+    form.append('message', formData.message);
+    form.append('address', '');
+    form.append('serviceType', '');
+    form.append('preferredDate', '');
+    form.append('issueDescription', '');
+
+    try {
+      await fetch(
+        'https://script.google.com/macros/s/AKfycbzgSVCnZzjYJCRPmQrVGuHBgv0MuS5bbfFXwwQ7aO1_TwALFZmGQBZMv6JY05qUOHRXxg/exec',
+        {
+          method: 'POST',
+          body: form,
+        }
+      );
+
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 3000);
+      setFormData({ name: '', phone: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Error submitting message:', error);
+      alert('There was an error submitting your message. Please try again.');
+    }
   };
 
   return (
@@ -91,6 +116,8 @@ export default function Contact() {
               </form>
             </div>
           </div>
+
+          {/* Contact Information */}
           <div className="space-y-6">
             <div className="bg-white rounded-xl shadow-lg p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
@@ -102,7 +129,7 @@ export default function Contact() {
                   <div>
                     <div className="font-semibold text-gray-900">Phone</div>
                     <a href="tel:+918838354099" className="text-blue-600 hover:underline">
-                      +91  8838354099
+                      +91 8838354099
                     </a>
                   </div>
                 </div>
@@ -113,12 +140,12 @@ export default function Contact() {
                   <div>
                     <div className="font-semibold text-gray-900">WhatsApp</div>
                     <a
-                      href="https://wa.me/91 8838354099"
+                      href="https://wa.me/918838354099"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:underline"
                     >
-                      +91  8838354099
+                      +91 8838354099
                     </a>
                   </div>
                 </div>
@@ -129,10 +156,10 @@ export default function Contact() {
                   <div>
                     <div className="font-semibold text-gray-900">Email</div>
                     <a
-                      href="mailto: karthickfitness2025@gmail.com"
+                      href="mailto:karthickfitness2025@gmail.com"
                       className="text-blue-600 hover:underline"
                     >
-                       karthickfitness2025@gmail.com
+                      karthickfitness2025@gmail.com
                     </a>
                   </div>
                 </div>
@@ -164,6 +191,7 @@ export default function Contact() {
                 </div>
               </div>
             </div>
+
             <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl shadow-lg p-8 text-white">
               <h3 className="text-2xl font-bold mb-4">Quick Contact</h3>
               <p className="mb-6">Need immediate assistance? Reach us directly!</p>

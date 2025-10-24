@@ -11,36 +11,47 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const form = new FormData();
-    form.append('formType', 'Send a Message');
-    form.append('name', formData.name);
-    form.append('phone', formData.phone);
-    form.append('email', formData.email);
-    form.append('message', formData.message);
-    form.append('address', '');
-    form.append('serviceType', '');
-    form.append('preferredDate', '');
-    form.append('issueDescription', '');
+  // ✅ prevent duplicate submissions
+  if (submitted) return;
 
-    try {
-      await fetch(
-        'https://script.google.com/macros/s/AKfycbzgSVCnZzjYJCRPmQrVGuHBgv0MuS5bbfFXwwQ7aO1_TwALFZmGQBZMv6JY05qUOHRXxg/exec',
-        {
-          method: 'POST',
-          body: form,
-        }
-      );
+  setSubmitted(true);
 
-      setSubmitted(true);
+  const form = new FormData();
+  form.append('formType', 'Send a Message');
+  form.append('name', formData.name);
+  form.append('phone', formData.phone);
+  form.append('email', formData.email);
+  form.append('message', formData.message);
+  form.append('address', '');
+  form.append('serviceType', '');
+  form.append('preferredDate', '');
+  form.append('issueDescription', '');
+
+  try {
+    const response = await fetch(
+      'https://script.google.com/macros/s/AKfycbzgSVCnZzjYJCRPmQrVGuHBgv0MuS5bbfFXwwQ7aO1_TwALFZmGQBZMv6JY05qUOHRXxg/exec',
+      {
+        method: 'POST',
+        body: form,
+      }
+    );
+
+    // ✅ check that Google Apps Script returned a success response
+    if (response.ok) {
       setTimeout(() => setSubmitted(false), 3000);
       setFormData({ name: '', phone: '', email: '', message: '' });
-    } catch (error) {
-      console.error('Error submitting message:', error);
-      alert('There was an error submitting your message. Please try again.');
+    } else {
+      throw new Error('Server error');
     }
-  };
+  } catch (error) {
+    console.error('Error submitting message:', error);
+    alert('There was an error submitting your message. Please try again.');
+    setSubmitted(false); // allow retry
+  }
+};
+
 
   return (
     <section id="contact" className="py-20 bg-gray-50">

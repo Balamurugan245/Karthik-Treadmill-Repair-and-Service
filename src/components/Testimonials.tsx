@@ -3,31 +3,27 @@ import { Star } from 'lucide-react';
 export default function Testimonials() {
   const testimonials = [
     {
-      name: 'Rajesh Kumar',
-      location: 'Bangalore',
+      name: 'Padmanaban N',
       rating: 5,
-      text: 'Excellent service! Karthik fixed my treadmill motor issue in just 2 hours. Very professional and reasonable pricing. Highly recommended!',
+      text: 'I recently had an outstanding experience with Karthick Treadmill Repair & Service! Their knowledgeable staff quickly diagnosed the issue with my treadmill and provided efficient repairs. What truly stood out was their helpful behavior, making the entire process seamless and stress-free. I highly recommend Karthick for anyone in need of reliable equipment repair. Their expertise and customer service are top-notch!',
       image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=200',
     },
     {
-      name: 'Priya Sharma',
-      location: 'Mumbai',
+      name: 'SRIVIDYA',
       rating: 5,
-      text: 'My treadmill was making loud noises and the belt was slipping. Karthik diagnosed the issue quickly and fixed it at a very fair price. Great experience!',
+      text: 'I had a great experience with Karthick Treadmill Repair & Service. The business is very easy to reach. I found their services to be well priced, which made me happy. The staff was friendly and helpful. They fixed my treadmill quickly and did a good job. Overall, I recommend Karthick Treadmill Repair & Service for anyone who needs help with fitness equipment!',
       image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200',
     },
     {
-      name: 'Amit Patel',
-      location: 'Pune',
+      name: 'MUTHUKUMAR',
       rating: 5,
-      text: 'Been using his services for 3 years now. Always on time, honest about repairs needed, and uses quality parts. Trustworthy technician!',
+      text: 'I had an excellent experience with Karthick Treadmill Repair & Service! They are very well connected and easy to reach. The customer service is great; they answered all my questions quickly. The staff is attentive and really cares about helping you. Plus, their location is easy to find, making the whole process smooth and convenient. Highly recommend!',
       image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200',
     },
     {
-      name: 'Sneha Reddy',
-      location: 'Hyderabad',
+      name: 'anisha vignesh',
       rating: 5,
-      text: 'The console on my treadmill stopped working. Karthik came the same day, replaced the circuit board, and it works perfectly now. Thank you!',
+      text: 'The customer service was excellent. They were friendly and helpful. They listened to my problems and fixed my treadmill quickly. I felt very happy with their work. I would recommend them to everyone who needs help with fitness equipment. Their service is really good!',
       image: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=200',
     },
   ];

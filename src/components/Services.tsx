@@ -18,7 +18,7 @@ export default function Services({ onBookService }: ServicesProps) {
       title: 'Belt and Motor Replacement',
       description:
         'Professional replacement of worn-out belts and motors with genuine parts for smooth operation.',
-      image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.decathlon.ie%2Fp%2F324324-21363-rear-roller-run100.html&psig=AOvVaw3shd3gauQKR7TCyrNDMB_6&ust=1761396300725000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNj95d7uvJADFQAAAAAdAAAAABAL',
+      image: 'https://cf-images.eu-west-1.prod.boltdns.net/v1/static/3415345270001/1428bf0a-e7c8-4b90-a5f6-4496ff546f93/d43319a0-bed7-4618-91a0-7ed0f9aa5bd7/1280x720/match/image.jpg',
     },
     {
       icon: Zap,

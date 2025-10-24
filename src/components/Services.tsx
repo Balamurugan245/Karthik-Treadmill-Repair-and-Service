@@ -25,7 +25,7 @@ export default function Services({ onBookService }: ServicesProps) {
       title: 'Electronic Console Repair',
       description:
         'Expert diagnosis and repair of display panels, control boards, and electronic components.',
-      image: 'https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQxqwgB4hUme0Kyk5a6Zx519GtpsPGal0Ufv-vIkoqdNZ0dqq-I',
     },
     {
       icon: Droplet,
